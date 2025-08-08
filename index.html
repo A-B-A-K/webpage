@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandre B. A. Kontouli - ML Engineer & Researcher</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-color: #1f2937;
+            --text-light: #6b7280;
+            --bg-color: #ffffff;
+            --bg-secondary: #f8fafc;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-color);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .location {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        /* Experience Cards */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title {
+            flex: 1;
+        }
+
+        .experience-title h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-title .company {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .experience-date {
+            background: var(--bg-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        .experience-location {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .experience-points {
+            list-style: none;
+        }
+
+        .experience-points li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-points li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .degree-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .gpa {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid #ff6b35;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cert-icon {
+            color: #ff6b35;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Publications */
+        .publication-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid #10b981;
+            transition: all 0.3s ease;
+        }
+
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .publication-badge {
+            background: linear-gradient(135deg, #10b981, #065f46);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Languages special styling */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .language-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .language-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .language-flag {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .language-name {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .language-level {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">A-B-A-K</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#publications">Publications</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Alexandre B. A. Kontouli</h1>
+            <div class="subtitle">Machine Learning Engineer & Researcher</div>
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i> Lausanne, Switzerland 🇨🇭
+            </div>
+            <div class="contact-info">
+                <a href="tel:+16172162143" class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    +1 (617) 216-2143
+                </a>
+                <a href="mailto:alexandre.kontouli@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    alexandre.kontouli@gmail.com
+                </a>
+                <a href="#" class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    alexandrebak
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title fade-in">About Me</h2>
+        <div class="fade-in">
+            <p style="font-size: 1.1rem; line-height: 1.8; text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-light);">
+                Highly motivated Machine Learning Engineer with a strong background in computer vision and generative AI. 
+                Proven ability to translate complex research into scalable solutions, including a CVPR-highlighted panoramic 
+                stereo depth dataset with over 200k total downloads on HuggingFace. Currently researching text-to-3D generation 
+                at Harvard and experienced in optimizing model performance for real-time applications.
+            </p>
+        </div>
+    </section>
+
+    <section id="experience" class="section" style="background: var(--bg-secondary);">
+        <h2 class="section-title fade-in">Experience</h2>
+        <div class="experience-grid fade-in">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-title">
+                        <h3><i class="fas fa-university"></i> Research Fellow</h3>
+                        <div class="company">Harvard University (VCG Lab)</div>
+                    </div>
+                    <div class="experience-date">Mar 2025 – Sep 2025</div>
+                </div>
+                <div class="experience-location">
+                    <i class="fas fa-map-marker-alt"></i> Boston, MA
+                </div>
+                <ul class="experience-points">
+                    <li>Conducting research at the VCG Lab led by Prof. Hanspeter Pfister, as part of an exchange supervised by Prof. Jean-Philippe Thiran; focused on generative AI, currently exploring text-to-3D algorithms</li>
+                    <li>Contributed to human mesh recovery algorithms by working on improving human-tracking using segmentation algorithms</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-title">
+                        <h3><i class="fas fa-laptop-code"></i> Machine Learning Engineer Intern</h3>
+                        <div class="company">Logitech - CTO office</div>
+                    </div>
+                    <div class="experience-date">Aug 2024 – Feb 2025</div>
+                </div>
+                <div class="experience-location">
+                    <i class="fas fa-map-marker-alt"></i> Lausanne, CH
+                </div>
+                <ul class="experience-points">
+                    <li>Worked on Edge AI solutions to integrate depth estimation algorithms directly into camera systems for real-time applications</li>
+                    <li>Deployed on-camera hardware, the final model attains 0.46 MAE with 6 GMACs per forward pass, and 18 ms inference latency</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-title">
+                        <h3><i class="fas fa-search"></i> Research Assistant</h3>
+                        <div class="company">Visual Intelligence for Transportation Lab (EPFL)</div>
+                    </div>
+                    <div class="experience-date">Feb 2023 – Jul 2024</div>
+                </div>
+                <div class="experience-location">
+                    <i class="fas fa-map-marker-alt"></i> Lausanne, CH
+                </div>
+                <ul class="experience-points">
+                    <li>Developed a novel panoramic stereo depth-estimation dataset using sensor fusion of camera and LiDAR data in Prof. Alexandre Alahi's lab; work led to a CVPR highlight publication</li>
+                    <li>The dataset hosted on Hugging Face regularly receives a couple thousand downloads per month, peaking at 45,000 downloads in one month</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <h2 class="section-title fade-in">Education</h2>
+        <div class="education-grid fade-in">
+            <div class="education-card">
+                <div class="degree-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Master's degree in Robotics</h3>
+                <p><strong>Minor in Data Science</strong></p>
+                <p>École Polytechnique Fédérale de Lausanne (EPFL)</p>
+                <p>Sep 2022 – Sep 2025 | Lausanne, CH</p>
+                <div class="gpa">GPA: 5.25/6</div>
+                <p style="margin-top: 1rem; color: var(--text-light);">
+                    <strong>Relevant courses:</strong> Machine Learning, Applied Data Analysis, Large Scale Data Science, 
+                    Modern NLP, Reinforcement Learning (PhD course), Stochastic Processes
+                </p>
+            </div>
+
+            <div class="education-card">
+                <div class="degree-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3>Bachelor's degree in Microengineering</h3>
+                <p>École Polytechnique Fédérale de Lausanne (EPFL)</p>
+                <p>Sep 2018 – Jul 2022 | Lausanne, CH</p>
+                <div class="gpa">GPA: 4.75/6</div>
+                <p style="margin-top: 1rem; color: var(--text-light);">
+                    <strong>Relevant courses:</strong> Linear Algebra, Intro to Databases, Signal Processing, 
+                    Embedded Systems
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section" style="background: var(--bg-secondary);">
+        <h2 class="section-title fade-in">Projects</h2>
+        <div class="projects-grid fade-in">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-shield-alt"></i> Aletheia Chrome Extension
+                    </div>
+                    <div class="project-tech">NLP • Web Security • GitHub • API</div>
+                </div>
+                <div class="project-content">
+                    <p>Developed a Chrome extension and web tool for real-time LLM-based fact-checking of social media content.</p>
+                    <span style="background: #10b981; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-top: 1rem; display: inline-block;">SCSP Hackathon 2025</span>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> View Project
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-gamepad"></i> Video Game Item RAG Chatbot
+                    </div>
+                    <div class="project-tech">Streamlit • LangChain • OpenAI API • ChromaDB</div>
+                </div>
+                <div class="project-content">
+                    <p>Developed a locally hosted chatbot capable of answering complex queries about League of Legends item data using a Retrieval-Augmented Generation (RAG) pipeline with LangChain orchestration and ChromaDB vector search.</p>
+                    <span style="background: var(--primary-color); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-top: 1rem; display: inline-block;">2025</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-image"></i> Image De-noising in JPEG AI
+                    </div>
+                    <div class="project-tech">Python • Image Processing • Deep Learning</div>
+                </div>
+                <div class="project-content">
+                    <p>Implemented a de-noising module on top of JPEG AI's compression at MMSPG lab. Achieved MS-SSIM of 0.95 vs DnCNN's 0.82, significantly improving image quality at very low BPP values (0.12).</p>
+                    <span style="background: var(--primary-color); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-top: 1rem; display: inline-block;">2024</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-brain"></i> Academic LLM with DPO
+                    </div>
+                    <div class="project-tech">Hugging Face • Finetuning • Quantization • Optimization</div>
+                </div>
+                <div class="project-content">
+                    <p>Built a quantized AI assistant (SFT + DPO + RAG) for EPFL courses, retaining 98.4% accuracy with a 75% smaller model.</p>
+                    <span style="background: var(--primary-color); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-top: 1rem; display: inline-block;">2024</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-film"></i> Gender Roles in Cinema
+                    </div>
+                    <div class="project-tech">Statistics • Python • R • Hypothesis Testing</div>
+                </div>
+                <div class="project-content">
+                    <p>Analyzed gender bias in cinema using NLP, survival analysis, and causal inference. Revealed disparities in tropes, career longevity, and audience ratings.</p>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-chart-line"></i> Data Visualization Website
+                    </div>
+                    <div class="project-tech">JavaScript (D3.js) • Data Engineering • HTML/CSS</div>
+                </div>
+                <div class="project-content">
+                    <p>Built a website to visualize global trends in political-violence and security incidents with interactive D3.js visualizations.</p>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <h2 class="section-title fade-in">Technical Skills</h2>
+        <div class="skills-grid fade-in">
+            <div class="skill-category">
+                <div class="skill-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Programming</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">BASH</span>
+                    <span class="skill-tag">CUDA</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>Frameworks</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">OpenCV</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">LangChain</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">ONNX</span>
+                    <span class="skill-tag">SLURM</span>
+                    <span class="skill-tag">Jupyter</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3>Cloud & AWS</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">AWS Bedrock</span>
+                    <span class="skill-tag">S3</span>
+                    <span class="skill-tag">Lambda</span>
+                    <span class="skill-tag">OpenSearch</span>
+                    <span class="skill-tag">DynamoDB</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Specializations</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Distributed Computing</span>
+                    <span class="skill-tag">Containerization</span>
+                    <span class="skill-tag">OOP</span>
+                    <span class="skill-tag">Parallel Programming</span>
+                    <span class="skill-tag">CI/CD</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" style="margin-top: 3rem;">
+            <h3 style="text-align: center; margin-bottom: 2rem; font-size: 2rem;">Languages</h3>
+            <div class="languages-grid">
+                <div class="language-item">
+                    <div class="language-flag">🇫🇷</div>
+                    <div class="language-name">French</div>
+                    <div class="language-level">Native</div>
+                </div>
+                <div class="language-item">
+                    <div class="language-flag">🇬🇷</div>
+                    <div class="language-name">Greek</div>
+                    <div class="language-level">Native</div>
+                </div>
+                <div class="language-item">
+                    <div class="language-flag">🇺🇸</div>
+                    <div class="language-name">English</div>
+                    <div class="language-level">Bilingual (TOEFL 112/120)</div>
+                </div>
+                <div class="language-item">
+                    <div class="language-flag">🇪🇸</div>
+                    <div class="language-name">Spanish</div>
+                    <div class="language-level">Elementary</div>
+                </div>
+                <div class="language-item">
+                    <div class="language-flag">🇸🇦</div>
+                    <div class="language-name">Arabic</div>
+                    <div class="language-level">Elementary</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="section" style="background: var(--bg-secondary);">
+        <h2 class="section-title fade-in">Certifications</h2>
+        <div class="cert-grid fade-in">
+            <div class="cert-card">
+                <div class="cert-icon">
+                    <i class="fab fa-aws"></i>
+                </div>
+                <h3>AWS SimuLearn: Create an AI Smart Assistant</h3>
+                <p>Automated employee request handling using Amazon Bedrock agents</p>
+                <div style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">
+                    <i class="fas fa-calendar"></i> June 2025
+                </div>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-icon">
+                    <i class="fab fa-aws"></i>
+                </div>
+                <h3>AWS SimuLearn: Secure Conversational AI with Guardrails</h3>
+                <p>Used Amazon Bedrock with configured guardrails to ensure policy-compliant and secure responses</p>
+                <div style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">
+                    <i class="fas fa-calendar"></i> June 2025
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" class="section">
+        <h2 class="section-title fade-in">Publications</h2>
+        <div class="fade-in">
+            <div class="publication-card">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <i class="fas fa-file-alt" style="color: #10b981; font-size: 2rem;"></i>
+                    <div>
+                        <h3>Helvipad: A Real-World Dataset for Omnidirectional Stereo Depth Estimation</h3>
+                        <p style="color: var(--text-light); margin-top: 0.5rem;">A comprehensive dataset for panoramic stereo depth estimation using sensor fusion of camera and LiDAR data.</p>
+                    </div>
+                </div>
+                <div class="publication-badge">
+                    <i class="fas fa-trophy"></i> CVPR 2025 Highlight (Top 13.6%)
+                </div>
+                <a href="#" class="project-link" style="margin-top: 1rem; display: inline-flex;">
+                    <i class="fas fa-external-link-alt"></i> Project Link
+                </a>
+                <div style="margin-top: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: 10px;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <i class="fab fa-python" style="color: #ff6b35;"></i>
+                        <strong>Impact:</strong>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-light);">
+                        200k+ total downloads on HuggingFace • Regularly receives thousands of downloads per month • 
+                        Peak of 45,000 downloads in a single month
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <h3 style="margin-bottom: 1rem;">Let's Connect</h3>
+            <p style="margin-bottom: 2rem; opacity: 0.8;">
+                Interested in machine learning, computer vision, or research collaboration? 
+                Feel free to reach out!
+            </p>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <a href="mailto:alexandre.kontouli@gmail.com" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.3s;">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </a>
+                <a href="tel:+16172162143" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.3s;">
+                    <i class="fas fa-phone"></i>
+                    Phone
+                </a>
+                <a href="#" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.3s;">
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn
+                </a>
+            </div>
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); opacity: 0.6;">
+                <p>&copy; 2025 Alexandre B. A. Kontouli. All rights reserved.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 100 && rect.bottom >= 100) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.style.color = 'var(--primary-color)';
+                }
+            });
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.experience-card, .project-card, .education-card, .skill-category').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add floating animation to hero elements
+        function addFloatingAnimation() {
+            const heroElements = document.querySelectorAll('.contact-item');
+            heroElements.forEach((element, index) => {
+                element.style.animation = `float 3s ease-in-out infinite`;
+                element.style.animationDelay = `${index * 0.2}s`;
+            });
+        }
+
+        // CSS for floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        addFloatingAnimation();
+
+        // Add typing effect to hero title (optional enhancement)
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroTitle = document.querySelector('.hero h1');
+            const originalText = heroTitle.textContent;
+            // Uncomment the next line if you want the typing effect
+            // typeWriter(heroTitle, originalText, 100);
+        });
+    </script>
+</body>
+</html>
